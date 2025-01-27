@@ -5,7 +5,9 @@ import styles from "./productcard.module.scss";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { CiHeart } from "react-icons/ci";
 import { addToCart } from "../../Redux/cart/CartSlice";
+import { addToWishList } from "../../Redux/wishlist/WishListSlice";
 
 const ProductCard = ({ product }) => {
 
@@ -19,6 +21,12 @@ const ProductCard = ({ product }) => {
   const addProduct = () => {
     dispatch(addToCart(product));
     toast.success(`${product?.title.slice(0, 20)} is added to cart`, {
+      autoClose: 1000,
+    });
+  };
+  const addWishlist = () => {
+    dispatch(addToWishList(product));
+    toast.success(`${product?.title.slice(0, 20)} is added to wishlist`, {
       autoClose: 1000,
     });
   };
@@ -38,9 +46,14 @@ const ProductCard = ({ product }) => {
         <Card.Body>
           <Card.Title>{title}</Card.Title>
           <Card.Text>${product?.price}</Card.Text>
-          <Button className={styles.commonBtn} onClick={addProduct}>
-            ADD TO CART
-          </Button>
+          <div className={styles.cardButtons}>
+            <Button className={styles.commonBtn} onClick={addProduct}>
+              ADD TO CART
+            </Button>
+            <Button className={styles.heartBtn} onClick={addWishlist}>
+              <CiHeart />
+            </Button>
+          </div>
         </Card.Body>
       </Card>
     </div>

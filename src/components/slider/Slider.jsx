@@ -43,8 +43,10 @@ const Slider = () => {
                     lineHeight: "100px",
                     fontWeight: "900",
                     width:"1000px",
-                    textAlign:"center"
-                    
+                    textAlign:"center",
+                    // background: "-webkit-linear-gradient(#eee, #000)",
+                    // WebkitBackgroundClip: "text",
+                    // WebkitTextFillColor:"transparent"
                     
                   }}
                 >

@@ -7,7 +7,10 @@
   margin: 0 auto;
   padding: 10px 0;
 }
-
+.cardButtons{
+  display: flex;
+  justify-content: space-between;
+}
 .productCard {
   position: relative;
   min-height: 300px;
@@ -24,9 +27,9 @@
   background-color: $nevyBlue !important;
   border: none !important;
   color: $white !important;
-  position: absolute;
-  bottom: 20px;
-  right: 85px;
+  // position: absolute;
+  // bottom: 20px;
+  // right: 85px;
 
   &:hover {
     background-color: $skyBlue !important;

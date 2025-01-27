@@ -1,33 +1,119 @@
-
+import { useState, useEffect } from "react";
+import ProductCard from "../../components/productcard/ProductCard";
 import styles from "./about.module.scss";
-import { Container, Row } from "react-bootstrap";
+import { Container, Form } from "react-bootstrap";
+import { useDispatch, useSelector } from "react-redux";
+import { STATUS } from "../../constant/STATUS";
+import { fetchProducts } from "../../Redux/product/ProductSlice";
+// import { setCategory, setSearchProduct } from "../../Redux/productfilter/FilterSlice";
+import { setCategory, setSearchProduct } from "../../Redux/productfilter/filterslice";
+import Loader from "../../components/loader/Loader";
+
+
+
 
 const About = () => {
+  const [showSearch, setShowSearch] = useState(true);
+
+  const dispatch = useDispatch();
+
+  const { products, status } = useSelector((state) => state.products);
+  const { searchedProduct, category } = useSelector(
+    (state) => state.productFilter
+  );
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  }, []);
+
+  let productsData;
+
+  const categories = [
+    {
+      value: "all",
+      name: "Find Product By Category",
+    },
+    {
+      value: "MEN",
+      name: "MEN",
+    },
+    {
+      value: "WOMEN",
+      name: "WOMEN",
+    },
+    {
+      value: "KIDS",
+      name: "KIDS",
+    },
+    {
+      value: "ACCESSORIES",
+      name: "ACCESSORIES",
+    },
+  ];
+
+  if (searchedProduct) {
+    productsData = products?.filter((item) =>
+      item.title.toLowerCase().includes(searchedProduct.toLowerCase())
+    );
+  } else if (category.length > 0) {
+    if (category.toLowerCase() === "all") {
+      productsData = products;
+    } else {
+      productsData = products?.filter((item) =>
+        item.category.toLowerCase().includes(category.toLowerCase())
+      );
+    }
+  } else {
+    productsData = products;
+  }
+
+  if (status === STATUS.LOADING) {
+    return <Loader />;
+  }
+
+  if (status !== STATUS.LOADING && status === STATUS.ERROR) {
+    return <h2>{status}</h2>;
+  }
+
   return (
-    <div>
-      <Container className={styles.container}>
-        <Row>
-          <h1 className="py-3 text-center">About Us</h1>
-          <p>
-            EKart is a leading Ecommerce company established in
-            June 2022. Main focus of this company is to develop product as a
-            Product, by maintaining the security and global standard of
-            New-Ecommerce-Era. The main products of the company include Exchange
-            Broker/TREC holder&#39;s Back-Office Management System, Cloud based
-            Point of Sale and Enterprise Resource Planning solution, e-Commerce
-            Solution and Hotel Owners&#39; Property Management System etc. The
-            management team of this company are the ICT Industry leaders having
-            more than 25 years experience in ICT arena.
-          </p>
-          <p>
-            The main products of the company include Exchange Broker/TREC
-            holder&#39;s Back-Office Management System, Cloud based Point of Sale
-            and Enterprise Resource Planning solution, e-Commerce Solution and
-            Hotel Owners&#39; Property Management System etc. The management team of
-            this company are the ICT Industry leaders having more than 25 years
-            experience in ICT arena.
-          </p>
-        </Row>
+    <div className={styles.productListWrapper} id="product-list">
+      <Container>
+        <h2 className="text-center py-3">Products</h2>
+        <div className={styles.searchWrapper}>
+          <div>
+            {showSearch && (
+              <Form.Control 
+                type="text" 
+                // placeholder={<BiSearch size={25} style={{ cursor: "pointer" }}  />}
+                placeholder="Search Product"
+                className={styles.searchBar} 
+                value={searchedProduct} 
+                onChange={(e) => dispatch(setSearchProduct(e.target.value))}
+                />
+                
+            )}
+          </div>
+        
+        <div className={styles.categorySelector}>
+          <select
+            className="form-select"
+            aria-label="Default select example"
+            defaultValue={category}
+            onChange={(e) => dispatch(setCategory(e.target.value))}
+          >
+            {categories.map((option) => (
+              <option value={option.value} key={option.value}>
+                {option.name}
+              </option>
+            ))}
+          </select>
+        </div>
+        </div>
+        <div className={styles.productList}>
+          {productsData?.map((product) => {
+            return <ProductCard key={product?.id} product={product} />;
+          })}
+        </div>
       </Container>
     </div>
   );
