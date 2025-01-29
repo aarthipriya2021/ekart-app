@@ -9,19 +9,28 @@ export const CartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
+    // addToCart(state, action) {
+    //   //if that action product has already in cart then if block will work
+    //   const itemIndex = state.cart.findIndex(
+    //     (item) => item.id === action.payload.id
+    //   );
+    //   if (itemIndex >= 0) {
+    //     state.cart[itemIndex].quantity += 1;
+    //   } else {
+    //     const product = { ...action.payload, quantity: 1 };
+    //     state.cart.push(product);
+    //   }
+
+    //   localStorage.setItem("cart", JSON.stringify(state.cart));
+    // },
+
     addToCart(state, action) {
-      //if that action product has already in cart then if block will work
-      const itemIndex = state.cart.findIndex(
-        (item) => item.id === action.payload.id
-      );
-      if (itemIndex >= 0) {
-        state.cart[itemIndex].quantity += 1;
-      } else {
+      const itemIndex = state.cart.findIndex((item) => item.id === action.payload.id);
+      if (itemIndex === -1) {  // Only add if item is not already in the cart
         const product = { ...action.payload, quantity: 1 };
         state.cart.push(product);
+        localStorage.setItem("cart", JSON.stringify(state.cart));
       }
-
-      localStorage.setItem("cart", JSON.stringify(state.cart));
     },
     removeFromCart(state, action) {
       const updatedCart = state.cart.filter((p) => p.id !== action.payload.id);

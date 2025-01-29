@@ -8,9 +8,17 @@ export const wishListSlice = createSlice({
   name: "wishlist",
   initialState,
   reducers: {
+    // addToWishList(state, action) {
+    //   state.wishList.push(action.payload);
+    //   localStorage.setItem("wishlist", JSON.stringify(state.wishList));
+    // },
+
     addToWishList(state, action) {
-      state.wishList.push(action.payload);
-      localStorage.setItem("wishlist", JSON.stringify(state.wishList));
+      const exists = state.wishList.some((item) => item.id === action.payload.id);
+      if (!exists) {  // Only add if the item is not already in wishlist
+        state.wishList.push(action.payload);
+        localStorage.setItem("wishlist", JSON.stringify(state.wishList));
+      }
     },
     removeFromWishList(state, action) {
       const newWishlist = state.wishList.filter(

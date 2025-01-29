@@ -3,7 +3,7 @@ import styles from "./wishlist.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "../../components/productcard/ProductCard";
 import noitem from "../../assets/noitem.jpg";
-import { removeAll } from "../../Redux/cart/CartSlice";
+import { removeAll } from "../../Redux/wishlist/WishListSlice";
 
 const WishList = () => {
   const dispatch = useDispatch();

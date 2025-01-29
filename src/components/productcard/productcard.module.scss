@@ -11,6 +11,19 @@
   display: flex;
   justify-content: space-between;
 }
+
+.heartBtn{
+  background-color: transparent;
+  color: gray;
+  border: none;
+
+  :hover{
+    background-color: transparent !important;
+    color: red;
+    border: none;
+  }
+}
+
 .productCard {
   position: relative;
   min-height: 300px;
