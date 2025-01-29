@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import ProductCard from "../../components/productcard/ProductCard";
-import styles from "./about.module.scss";
+import styles from "./exploreall.module.scss";
 import { Container, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { STATUS } from "../../constant/STATUS";

@@ -4,7 +4,7 @@ import WishList from './pages/wishlist/WishList';
 import Cart from "./pages/cart/Cart";
 import ErrorPage from './pages/error/ErrorPage';
 import ProductDetails from './components/productdetails/ProductDetails';
-import About from "./pages/about/About";
+import About from "./pages/explore/ExploreAll";
 import { Routes, Route } from 'react-router-dom'
 import './App.scss'
 import Footer from './components/footer/Footer';
