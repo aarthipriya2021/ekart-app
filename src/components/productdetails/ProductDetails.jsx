@@ -8,14 +8,18 @@ import Loader from "../loader/Loader";
 import useFetch from "../../services/usefetch";
 import styles from "./productdetail.module.scss";
 import { addToWishList, removeFromWishList, } from "../../Redux/wishlist/WishListSlice";
-import { addToCart } from "../../Redux/cart/CartSlice";
+import { addToCart, removeFromCart } from "../../Redux/cart/CartSlice";
 
 
-const ProductDetails = () => {
+const ProductDetails = ({ product }) => {
 
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const cartsState = useSelector((state) => state.cart.cart).some(
+    (p) => p?.id?.toString() === id
+  );
 
   const state = useSelector((state) => state.wishlist.wishList).some(
     (p) => p?.id?.toString() === id
@@ -29,12 +33,28 @@ const ProductDetails = () => {
     return <h3>{error.message}</h3>;
   }
 
+  // Get cart and wishlist state
+  // const cartItems = useSelector((state) => state.cart.cart);
+
+  // Check if the product is in the cart or wishlist
+  // const isInCart = cartItems.some((item) => item.id === product.id);
+
   //add product to cart handler
   const productHandler = () => {
-    dispatch(addToCart(data));
-    toast.success(`${data?.title.slice(0, 20)} is added to cart`, {
-      autoClose: 1000,
-    });
+    if (state) {
+      dispatch(removeFromCart(data));
+      toast.warning(
+        `${data?.title.slice(0, 20)} is remove from your cart`,
+        {
+          autoClose: 1000,
+        }
+      );
+    } else {
+      dispatch(addToCart(data));
+      toast.success(`${data?.title.slice(0, 20)} is added to your cart`, {
+        autoClose: 1000,
+      });
+    }
   };
 
   //Wishlist button handler
@@ -79,7 +99,7 @@ const ProductDetails = () => {
           <p className="py-1">{data?.description}</p>
           <h5>Price: ${data?.price}</h5>
           <button className="btn btn-primary mt-2" onClick={productHandler}>
-            Add to Cart
+            {cartsState ? "Remove from Cart" : "Add to Cart"}
           </button>
           <button
             className={`btn btn-primary mt-2 ms-2`}

@@ -25,7 +25,7 @@ const ProductCard = ({ product }) => {
   const handleCart = () => {
     if (isInCart) {
       dispatch(removeFromCart(product));
-      toast.info(`${product?.title.slice(0, 20)} removed from cart`, { autoClose: 1000 });
+      toast.warning(`${product?.title.slice(0, 20)} removed from cart`, { autoClose: 1000 });
     } else {
       dispatch(addToCart(product));
       toast.success(`${product?.title.slice(0, 20)} added to cart`, { autoClose: 1000 });
@@ -36,7 +36,7 @@ const ProductCard = ({ product }) => {
   const handleWishlist = () => {
     if (isInWishList) {
       dispatch(removeFromWishList(product));
-      toast.info(`${product?.title.slice(0, 20)} removed from wishlist`, { autoClose: 1000 });
+      toast.warning(`${product?.title.slice(0, 20)} removed from wishlist`, { autoClose: 1000 });
     } else {
       dispatch(addToWishList(product));
       toast.success(`${product?.title.slice(0, 20)} added to wishlist`, { autoClose: 1000 });

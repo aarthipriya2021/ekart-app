@@ -71,7 +71,7 @@ const Cart = () => {
                   removeProductHandler(product);
                 }}
               >
-                remove
+                Remove
               </button>
             </div>
           </div>

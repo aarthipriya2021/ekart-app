@@ -18,12 +18,12 @@ const Category = () => {
     },
     {
       img: cat3,
-      name: "KIDS",
+      name: "ACCESSORIES",
       id: 3,
     },
     {
       img: cat4,
-      name: "ACCESSORIES",
+      name: "ELECTRONICS",
       id: 4,
     },
   ];

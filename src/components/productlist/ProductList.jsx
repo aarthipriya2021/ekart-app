@@ -41,12 +41,12 @@ const ProductList = () => {
       name: "WOMEN",
     },
     {
-      value: "KIDS",
-      name: "KIDS",
+      value: "JEWELERY",
+      name: "ACCESSORIES",
     },
     {
-      value: "ACCESSORIES",
-      name: "ACCESSORIES",
+      value: "ELECTRONICS",
+      name: "ELECTRONICS",
     },
   ];
 
