@@ -1,0 +1,130 @@
+// please check onceafter completed
+
+@use "../../styles/global.scss";
+@use "../../styles/colors.scss";
+@use "../../styles/constant.scss";
+
+
+.sliderItem {
+  height: 520px;
+  object-fit: cover;
+  img {
+    object-fit: cover;
+    aspect-ratio: 16/9;
+  }
+}
+
+.sliderCaption {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.sliderCaption h1{
+  font-family: "DM Sans", serif;
+  line-height: 55px;
+  text-align: center;
+  margin: 0;
+}
+.sliderBtn {
+  background-color: colors.$primaryColor !important;
+  border: none !important;
+  color: colors.$black !important;
+  padding: 10px 25px !important;
+
+  :global {
+    a {
+      text-decoration: none;
+      color: inherit;
+
+      &:hover {
+        color: inherit;
+      }
+    }
+  }
+
+  &:hover {
+    background-color: colors.$nevyBlue !important;
+  }
+}
+
+:global {
+  .rec-carousel-item {
+    .card {
+      margin: 20px 0 !important;
+    }
+  }
+
+  .carousel-indicators {
+    button {
+      height: 10px !important;
+      width: 10px !important;
+      border-radius: 50%;
+    }
+  }
+
+  .carousel {
+    .carousel-control-prev,
+    .carousel-control-next {
+      display: none;
+    }
+
+    .carousel-caption {
+      top: 5% !important;
+      padding-top: 0;
+    }
+  }
+}
+
+@media (max-width: constant.$media-md) {
+  .sliderItem {
+    height: auto;
+
+    img {
+      min-height: 300px;
+    }
+
+    :global {
+      .carousel-caption {
+        top: 10% !important;
+      }
+
+      h1 {
+        font-size: 22px !important;
+        line-height: 24px !important;
+      }
+    }
+  }
+
+  :global {
+    .carousel-indicators {
+      button {
+        display: none;
+      }
+    }
+
+    .rec-carousel-item {
+      .card {
+        margin: 0 !important;
+      }
+    }
+  }
+}
+
+@media (min-width: 768px) and (max-width: constant.$media-lg) {
+  .sliderItem {
+    min-height: auto;
+
+    img {
+      min-height: 350px;
+      aspect-ratio: 16/9;
+    }
+
+    :global {
+      .carousel-caption {
+        top: 100px !important;
+      }
+    }
+  }
+}

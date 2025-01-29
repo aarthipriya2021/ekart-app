@@ -1,0 +1,30 @@
+@use "./colors.scss";
+@use "./constant.scss";
+
+// @use "./colors.scss";
+// @use "./constant.scss";
+
+
+body {
+  font-family: "Raleway", sans-serif;
+}
+
+@media (max-width: constant.$media-md) {
+  h3,
+  h4,
+  h5,
+  p,
+  h2 {
+    text-align: center;
+  }
+
+  .navbar-light {
+    .navbar-toggler {
+      border-color: colors.$white !important;
+    }
+
+    .navbar-toggler-icon {
+      background-color: colors.$white;
+    }
+  }
+}
