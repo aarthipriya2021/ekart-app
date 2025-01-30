@@ -2,7 +2,7 @@
 import styles from "./wishlist.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "../../components/productcard/ProductCard";
-import noitem from "../../assets/noitem.jpg";
+import noitem from "../../assets/empty_wishlist.jpg";
 import { removeAll } from "../../Redux/wishlist/WishListSlice";
 
 const WishList = () => {
@@ -15,7 +15,8 @@ const WishList = () => {
       })
     ) : (
       <div className="text-center">
-        <img src={noitem} alt="wishlist empty" />
+        <img src={noitem} alt="wishlist empty" width="300px" height="300px" />
+        <h1 style={{ color: "#2874F0"}}>No Items in Wishlist</h1>
       </div>
     );
   return (
@@ -39,7 +40,7 @@ const WishList = () => {
         )}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default WishList
+export default WishList;
