@@ -29,11 +29,13 @@ const ProductSlider = ({ category }) => {
   }
 
   return (
-    <div className="container py-3">
-      <Carousel itemsToShow={size <= 767 ? 1 : 3}>
-        {data?.map((product) => {
-          return <ProductCard product={product} key={product.id} />;
-        })}
+    <div className="product-slider">
+      <Carousel itemsToShow={size <= 767 ? 1 : 3} itemPadding={[10, 10]}>
+        {data?.map((product) => (
+          <div className="carousel-item-wrapper" key={product.id}>
+            <ProductCard product={product} />
+          </div>
+        ))}
       </Carousel>
     </div>
   );

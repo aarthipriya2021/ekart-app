@@ -18,7 +18,7 @@ const NavBar = () => {
     {
       name: "Explore All",
       id: 2,
-      path: "/about",
+      path: "/explore",
     },
     {
       name: "WishList",

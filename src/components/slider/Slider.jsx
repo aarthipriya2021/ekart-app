@@ -44,17 +44,14 @@ const Slider = () => {
                     fontWeight: "900",
                     width:"1000px",
                     textAlign:"center",
-                    // background: "-webkit-linear-gradient(#eee, #000)",
-                    // WebkitBackgroundClip: "text",
-                    // WebkitTextFillColor:"transparent"
-                    
+                    paddingBottom:"30px"
                   }}
                 >
                   {item.caption}
                 </h1>
                 <p
                   style={{
-                    
+                    paddingBottom:"20px"
                   }}
                 >
                 Experience shopping like never before with E-Kart – where great deals meet convenience!

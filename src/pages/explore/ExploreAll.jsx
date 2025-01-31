@@ -12,7 +12,7 @@ import Loader from "../../components/loader/Loader";
 
 
 
-const About = () => {
+const ExploreAll = () => {
   const [showSearch, setShowSearch] = useState(true);
 
   const dispatch = useDispatch();
@@ -119,4 +119,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default ExploreAll;

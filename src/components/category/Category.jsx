@@ -3,6 +3,7 @@ import cat2 from "../../assets/women.jpg";
 import cat3 from "../../assets/electronics.jpg"
 import cat4 from "../../assets/accessories.jpg"; 
 import styles from "./Category.module.scss"
+import ExploreAll from "../../pages/explore/ExploreAll";
 
 const Category = () => {
   const categories = [
@@ -30,19 +31,20 @@ const Category = () => {
   return (
     <div className="pt-5 container">
       <h3 className="py-2">Shop by Caterogry</h3>
-      <div className={`${styles.categoryWrapper}`}>
+      <div className={`${styles.categoryWrapper}`} onClick={<ExploreAll />}>
         {categories.map((Category) => {
           return (
-            <div key={Category.id}>
+            <div key={Category.id} onClick={<ExploreAll />}>
               <div
                 className="category"
+                
                 style={{
                   background: `linear-gradient(rgba(20,20,20, 0.3),rgba(20,20,20, .3)), url(${Category.img}) no-repeat`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
               >
-                <h5 className="text-white px-3">
+                <h5 className="text-white px-3" >
                   {Category.name.toUpperCase()}
                 </h5>
               </div>

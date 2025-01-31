@@ -5,6 +5,15 @@
 .productListWrapper {
   padding: 50px 0;
 
+  h2{
+    margin-top: 20px;
+    font-weight: 800;
+    text-transform: uppercase;
+    background: -webkit-linear-gradient(#000, colors.$nevyBlue);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  }
+
   :global {
     .loadBtn {
       background-color: colors.$nevyBlue;

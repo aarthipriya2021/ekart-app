@@ -14,7 +14,7 @@ const WishList = () => {
         return <ProductCard key={product?.id} product={product} />;
       })
     ) : (
-      <div className="text-center">
+      <div className={styles.noitemimage}>
         <img src={noitem} alt="wishlist empty" width="300px" height="300px" />
         <h1 style={{ color: "#2874F0"}}>No Items in Wishlist</h1>
       </div>

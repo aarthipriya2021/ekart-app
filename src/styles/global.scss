@@ -1,13 +1,10 @@
 @use "./colors.scss";
 @use "./constant.scss";
 
-// @use "./colors.scss";
-// @use "./constant.scss";
-
-
 body {
   font-family: "Raleway", sans-serif;
 }
+
 
 @media (max-width: constant.$media-md) {
   h3,
@@ -24,7 +21,8 @@ body {
     }
 
     .navbar-toggler-icon {
-      background-color: colors.$white;
+      color: black;
+      // background-color: colors.$white;
     }
   }
 }
