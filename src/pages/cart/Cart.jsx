@@ -7,11 +7,14 @@ import {
   reduceProduct,
 } from "../../Redux/cart/CartSlice";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+// import { checkoutCart } from "../../Redux/cart/CartSlice";
 import EmptyCart from "../../components/emptycart/EmptyCart";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.cart);
+  const navigate = useNavigate();
 
   //calculate total price
   const totalPrice = products.cart.reduce(
@@ -34,6 +37,12 @@ const Cart = () => {
       autoClose: 1000,
     });
   };
+
+  const checkout = () => {
+    toast.success("Order Placed Successfully");
+    navigate("/");
+    dispatch(removeAll());
+  }
 
   if (products.cart.length === 0) {
     return <EmptyCart />;
@@ -91,6 +100,11 @@ const Cart = () => {
         <h5>
           Total Price: <b>${totalPrice.toFixed(2)}</b>
         </h5>
+      </div>
+      <div>
+        <button className={styles.checkoutBtn} onClick={checkout}>
+          Checkout
+        </button>
       </div>
     </div>
   );

@@ -25,7 +25,7 @@
     }
 
     .btn-danger {
-      padding: 2px 15px;
+      padding: 8px 20px;
     }
   }
 }
@@ -35,7 +35,27 @@
   border: none;
   border-radius: 2px;
   color: colors.$white;
-  padding: 2px 15px;
+  padding: 8px 20px;
+
+  &:hover {
+    border: 1px solid colors.$nevyBlue;
+    background-color: transparent;
+    color: colors.$black;
+  }
+}
+
+.checkoutBtn{
+  background-color: colors.$nevyBlue;
+  border: none;
+  border-radius: 2px;
+  color: colors.$white;
+  padding: 12px 30px;
+
+  &:hover {
+    border: 1px solid colors.$nevyBlue;
+    background-color: transparent;
+    color: colors.$black;
+  }
 }
 
 @media (max-width: constant.$media-md) {
