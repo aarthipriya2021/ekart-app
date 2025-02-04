@@ -39,7 +39,6 @@
   -webkit-background-clip: text;
   transition: all 0.3s ease-in-out;
   -webkit-text-fill-color: transparent;
-  
 
   &:hover {
     background-position: 0;
@@ -71,7 +70,7 @@
       }
     }
   }
-  :hover{
+  :hover {
     color: colors.$nevyBlue;
   }
 }
@@ -79,6 +78,7 @@
 @media (max-width: constant.$media-lg) {
   .navBar {
     // position: unset !important;
+    background-color: rgb(0, 0, 0);
   }
 
   .menuLink {
@@ -89,7 +89,7 @@
   .cartIcon {
     margin: 15px 0 0;
   }
-  .cartLength{
+  .cartLength {
     display: none;
   }
 }

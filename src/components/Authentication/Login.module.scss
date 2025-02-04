@@ -1,0 +1,136 @@
+@use "../../styles/global.scss";
+@use "../../styles/colors.scss";
+@use "../../styles/constant.scss";
+
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  // background: colors.$nevyBlue;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.349), rgba(0, 0, 0, 0.349)),
+    url("../../assets/login_bg.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.loginBox {
+  width: 350px;
+  padding: 2rem;
+  background: transparent;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  text-align: center;
+
+  h2 {
+    margin-bottom: 1rem;
+    font-size: 1.8rem;
+    color: colors.$black;
+    font-weight: 600;
+  }
+
+  .formGroup {
+    margin-bottom: 1rem;
+    text-align: left;
+
+    label {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #333;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+
+      &:focus {
+        border-color: colors.$skyBlue;
+        outline: none;
+        box-shadow: 0 0 5px colors.$skyBlue;
+      }
+    }
+  }
+
+  .loginBtn {
+    width: 100%;
+    padding: 10px;
+    background: colors.$nevyBlue;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+    &:hover {
+      background: colors.$skyBlue;
+    }
+  }
+
+  p {
+    padding-top: 40px;
+    color: rgb(241, 253, 0);
+  }
+
+  .signup-link {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+
+    a {
+      color: #ff758c;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
+.menuLink {
+  font-size: constant.$font-size-base;
+  font-weight: 800;
+  line-height: 22px;
+  margin-left: 30px;
+  background-image: linear-gradient(
+    to right,
+    colors.$nevyBlue,
+    colors.$nevyBlue 50%,
+    colors.$white 50%
+  );
+  background-size: 200% 100%;
+  background-position: -100%;
+  -webkit-background-clip: text;
+  transition: all 0.3s ease-in-out;
+  -webkit-text-fill-color: transparent;
+
+  &:hover {
+    background-position: 0;
+  }
+}
+.navLink {
+  font-size: 22px;
+  line-height: 24px;
+  text-decoration: none;
+  color: colors.$white;
+  font-weight: 600;
+
+  &:hover {
+    color: colors.$black;
+  }
+}
+
+@media (max-width: constant.$media-lg) {
+  .menuLink {
+    margin-left: 0;
+    padding-bottom: 10px;
+  }
+}

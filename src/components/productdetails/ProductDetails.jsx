@@ -1,4 +1,4 @@
-import { memo} from "react";
+import { memo } from "react";
 import { Breadcrumb } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import ProductSlider from "../slider/ProductSlider";
@@ -7,12 +7,13 @@ import { toast } from "react-toastify";
 import Loader from "../loader/Loader";
 import useFetch from "../../services/usefetch";
 import styles from "./productdetail.module.scss";
-import { addToWishList, removeFromWishList, } from "../../Redux/wishlist/WishListSlice";
+import {
+  addToWishList,
+  removeFromWishList,
+} from "../../Redux/wishlist/WishListSlice";
 import { addToCart, removeFromCart } from "../../Redux/cart/CartSlice";
 
-
 const ProductDetails = ({ product }) => {
-
   const { id } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -43,12 +44,9 @@ const ProductDetails = ({ product }) => {
   const productHandler = () => {
     if (state) {
       dispatch(removeFromCart(data));
-      toast.warning(
-        `${data?.title.slice(0, 20)} is remove from your cart`,
-        {
-          autoClose: 1000,
-        }
-      );
+      toast.warning(`${data?.title.slice(0, 20)} is remove from your cart`, {
+        autoClose: 1000,
+      });
     } else {
       dispatch(addToCart(data));
       toast.success(`${data?.title.slice(0, 20)} is added to your cart`, {
@@ -115,7 +113,7 @@ const ProductDetails = ({ product }) => {
         <ProductSlider category={data?.category} />
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default memo(ProductDetails);

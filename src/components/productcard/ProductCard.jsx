@@ -7,7 +7,10 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart, removeFromCart } from "../../Redux/cart/CartSlice";
-import { addToWishList, removeFromWishList } from "../../Redux/wishlist/WishListSlice";
+import {
+  addToWishList,
+  removeFromWishList,
+} from "../../Redux/wishlist/WishListSlice";
 
 const ProductCard = ({ product }) => {
   const dispatch = useDispatch();
@@ -25,10 +28,14 @@ const ProductCard = ({ product }) => {
   const handleCart = () => {
     if (isInCart) {
       dispatch(removeFromCart(product));
-      toast.warning(`${product?.title.slice(0, 20)} removed from cart`, { autoClose: 1000 });
+      toast.warning(`${product?.title.slice(0, 20)} removed from cart`, {
+        autoClose: 1000,
+      });
     } else {
       dispatch(addToCart(product));
-      toast.success(`${product?.title.slice(0, 20)} added to cart`, { autoClose: 1000 });
+      toast.success(`${product?.title.slice(0, 20)} added to cart`, {
+        autoClose: 1000,
+      });
     }
   };
 
@@ -36,18 +43,29 @@ const ProductCard = ({ product }) => {
   const handleWishlist = () => {
     if (isInWishList) {
       dispatch(removeFromWishList(product));
-      toast.warning(`${product?.title.slice(0, 20)} removed from wishlist`, { autoClose: 1000 });
+      toast.warning(`${product?.title.slice(0, 20)} removed from wishlist`, {
+        autoClose: 1000,
+      });
     } else {
       dispatch(addToWishList(product));
-      toast.success(`${product?.title.slice(0, 20)} added to wishlist`, { autoClose: 1000 });
+      toast.success(`${product?.title.slice(0, 20)} added to wishlist`, {
+        autoClose: 1000,
+      });
     }
   };
 
   return (
-    <Card className={styles.productCard} onClick={() => navigate(`/product/${product?.id}`)}>
-      <Card.Img variant="top" src={product?.image} className={styles.cardImg} />
+    <Card className={styles.productCard}>
+      <Card.Img
+        variant="top"
+        src={product?.image}
+        className={styles.cardImg}
+        onClick={() => navigate(`/product/${product?.id}`)}
+      />
       <Card.Body>
-        <Card.Title>{product?.title.slice(0, 20)}</Card.Title>
+        <Card.Title onClick={() => navigate(`/product/${product?.id}`)}>
+          {product?.title.slice(0, 20)}
+        </Card.Title>
         <Card.Text>${product?.price}</Card.Text>
         <div className={styles.cardButtons}>
           <Button className={styles.commonBtn} onClick={handleCart}>

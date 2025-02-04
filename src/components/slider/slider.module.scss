@@ -4,7 +4,6 @@
 @use "../../styles/colors.scss";
 @use "../../styles/constant.scss";
 
-
 .sliderItem {
   height: 520px;
   object-fit: cover;
@@ -20,12 +19,12 @@
   justify-content: center;
   align-items: center;
 
-  h1{
+  h1 {
     color: colors.$white;
   }
 }
 
-.sliderCaption h1{
+.sliderCaption h1 {
   font-family: "DM Sans", serif;
   line-height: 55px;
   text-align: center;

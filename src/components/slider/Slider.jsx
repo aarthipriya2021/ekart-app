@@ -3,7 +3,7 @@ import hero_1 from "../../assets/hero_1.png";
 import hero_2 from "../../assets/hero_2.png";
 import hero_3 from "../../assets/hero_3.png";
 import hero_4 from "../../assets/hero_4.png";
-import styles from  "./slider.module.scss";
+import styles from "./slider.module.scss";
 
 const Slider = () => {
   const sliderItems = [
@@ -38,23 +38,24 @@ const Slider = () => {
               <Carousel.Caption className={styles.sliderCaption}>
                 <h1
                   style={{
-                    color: "white" ,
+                    color: "white",
                     fontSize: "85px",
                     lineHeight: "100px",
                     fontWeight: "900",
-                    width:"1000px",
-                    textAlign:"center",
-                    paddingBottom:"30px"
+                    width: "1000px",
+                    textAlign: "center",
+                    paddingBottom: "30px",
                   }}
                 >
                   {item.caption}
                 </h1>
                 <p
                   style={{
-                    paddingBottom:"20px"
+                    paddingBottom: "20px",
                   }}
                 >
-                Experience shopping like never before with E-Kart – where great deals meet convenience!
+                  Experience shopping like never before with E-Kart – where
+                  great deals meet convenience!
                 </p>
                 <Button className={styles.sliderBtn}>
                   <a href="#product-list">Discover More</a>
@@ -65,7 +66,7 @@ const Slider = () => {
         })}
       </Carousel>
     </div>
-  )
-}
+  );
+};
 
 export default Slider;

@@ -6,11 +6,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { STATUS } from "../../constant/STATUS";
 import { fetchProducts } from "../../Redux/product/ProductSlice";
 // import { setCategory, setSearchProduct } from "../../Redux/productfilter/FilterSlice";
-import { setCategory, setSearchProduct } from "../../Redux/productfilter/FilterSlice.js";
+import {
+  setCategory,
+  setSearchProduct,
+} from "../../Redux/productfilter/FilterSlice.js";
 import Loader from "../../components/loader/Loader";
-
-
-
 
 const ExploreAll = () => {
   const [showSearch, setShowSearch] = useState(true);
@@ -82,32 +82,31 @@ const ExploreAll = () => {
         <div className={styles.searchWrapper}>
           <div>
             {showSearch && (
-              <Form.Control 
-                type="text" 
+              <Form.Control
+                type="text"
                 // placeholder={<BiSearch size={25} style={{ cursor: "pointer" }}  />}
                 placeholder="Search Product"
-                className={styles.searchBar} 
-                value={searchedProduct} 
+                className={styles.searchBar}
+                value={searchedProduct}
                 onChange={(e) => dispatch(setSearchProduct(e.target.value))}
-                />
-                
+              />
             )}
           </div>
-        
-        <div className={styles.categorySelector}>
-          <select
-            className="form-select"
-            aria-label="Default select example"
-            defaultValue={category}
-            onChange={(e) => dispatch(setCategory(e.target.value))}
-          >
-            {categories.map((option) => (
-              <option value={option.value} key={option.value}>
-                {option.name}
-              </option>
-            ))}
-          </select>
-        </div>
+
+          <div className={styles.categorySelector}>
+            <select
+              className="form-select"
+              aria-label="Default select example"
+              defaultValue={category}
+              onChange={(e) => dispatch(setCategory(e.target.value))}
+            >
+              {categories.map((option) => (
+                <option value={option.value} key={option.value}>
+                  {option.name}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
         <div className={styles.productList}>
           {productsData?.map((product) => {

@@ -7,7 +7,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { STATUS } from "../../constant/STATUS";
 import { fetchProducts } from "../../Redux/product/ProductSlice";
 // import { setCategory, setSearchProduct } from "../../Redux/productfilter/FilterSlice";
-import { setCategory, setSearchProduct } from "../../Redux/productfilter/FilterSlice.js";
+import {
+  setCategory,
+  setSearchProduct,
+} from "../../Redux/productfilter/FilterSlice.js";
 
 import Loader from "../loader/Loader";
 

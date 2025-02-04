@@ -1,11 +1,12 @@
-import cat1 from "../../assets/men.jpg"; 
-import cat2 from "../../assets/women.jpg"; 
-import cat3 from "../../assets/electronics.jpg"
-import cat4 from "../../assets/accessories.jpg"; 
-import styles from "./Category.module.scss"
-import ExploreAll from "../../pages/explore/ExploreAll";
+import cat1 from "../../assets/men.jpg";
+import cat2 from "../../assets/women.jpg";
+import cat3 from "../../assets/electronics.jpg";
+import cat4 from "../../assets/accessories.jpg";
+import styles from "./Category.module.scss";
+import { useNavigate } from "react-router-dom";
 
 const Category = () => {
+  const navigate = useNavigate();
   const categories = [
     {
       img: cat1,
@@ -31,20 +32,23 @@ const Category = () => {
   return (
     <div className="pt-5 container">
       <h3 className="py-2">Shop by Caterogry</h3>
-      <div className={`${styles.categoryWrapper}`} onClick={<ExploreAll />}>
+      <div className={`${styles.categoryWrapper}`}>
         {categories.map((Category) => {
           return (
-            <div key={Category.id} onClick={<ExploreAll />}>
+            <div key={Category.id}>
               <div
                 className="category"
-                
+                onClick={() => navigate(`/explore`)}
                 style={{
                   background: `linear-gradient(rgba(20,20,20, 0.3),rgba(20,20,20, .3)), url(${Category.img}) no-repeat`,
                   backgroundSize: "cover",
                   backgroundPosition: "center",
                 }}
               >
-                <h5 className="text-white px-3" >
+                <h5
+                  className="text-white px-3"
+                  onClick={() => navigate("/explore")}
+                >
                   {Category.name.toUpperCase()}
                 </h5>
               </div>
@@ -54,6 +58,6 @@ const Category = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Category
+export default Category;

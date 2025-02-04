@@ -1,7 +1,7 @@
 import Slider from "../../components/slider/Slider";
 import Category from "../../components/category/Category";
 import ProductList from "../../components/productlist/ProductList";
-import styles from "./home.module.scss"
+import styles from "./home.module.scss";
 
 const Home = () => {
   return (
@@ -10,7 +10,7 @@ const Home = () => {
       <Category />
       <ProductList />
     </div>
-  )
-}
+  );
+};
 
 export default Home;

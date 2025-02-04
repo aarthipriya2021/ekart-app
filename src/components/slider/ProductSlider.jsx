@@ -1,11 +1,9 @@
-import { memo, useState, useLayoutEffect } from 'react';
-import PropTypes from 'prop-types';
-import { Carousel } from 'react-bootstrap';
-import useFetch from '../../services/usefetch';
+import { memo, useState, useLayoutEffect } from "react";
+import PropTypes from "prop-types";
+import { Carousel } from "react-bootstrap";
+import useFetch from "../../services/usefetch";
 import Loader from "../loader/Loader";
 import ProductCard from "../productcard/ProductCard";
-
-
 
 const ProductSlider = ({ category }) => {
   const [size, setSize] = useState("");
@@ -42,7 +40,7 @@ const ProductSlider = ({ category }) => {
 };
 
 ProductSlider.propTypes = {
-    category: PropTypes.string.isRequired, // Ensure 'category' is a string and required
+  category: PropTypes.string.isRequired, // Ensure 'category' is a string and required
 };
 
 export default memo(ProductSlider);

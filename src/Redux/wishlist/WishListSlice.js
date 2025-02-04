@@ -14,8 +14,11 @@ export const wishListSlice = createSlice({
     // },
 
     addToWishList(state, action) {
-      const exists = state.wishList.some((item) => item.id === action.payload.id);
-      if (!exists) {  // Only add if the item is not already in wishlist
+      const exists = state.wishList.some(
+        (item) => item.id === action.payload.id
+      );
+      if (!exists) {
+        // Only add if the item is not already in wishlist
         state.wishList.push(action.payload);
         localStorage.setItem("wishlist", JSON.stringify(state.wishList));
       }

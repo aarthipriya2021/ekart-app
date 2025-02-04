@@ -1,8 +1,13 @@
 import styles from "./cart.module.scss";
 import { useSelector, useDispatch } from "react-redux";
-import { removeFromCart, removeAll, incrementProduct, reduceProduct } from "../../Redux/cart/CartSlice";
+import {
+  removeFromCart,
+  removeAll,
+  incrementProduct,
+  reduceProduct,
+} from "../../Redux/cart/CartSlice";
 import { toast } from "react-toastify";
-import EmptyCart from "../../components/emptycart/EmptyCart"
+import EmptyCart from "../../components/emptycart/EmptyCart";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -88,7 +93,7 @@ const Cart = () => {
         </h5>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Cart
+export default Cart;

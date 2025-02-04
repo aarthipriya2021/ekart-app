@@ -1,4 +1,3 @@
-
 import loader from "../../assets/loader.gif";
 
 const Loader = () => {
