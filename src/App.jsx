@@ -22,10 +22,17 @@ function App() {
   return (
     <div className="App">
       {/* Show Navbar only if user is logged in */}
-      {user && <NavBar />}
+      {/* {user && <NavBar />} */}
+      <NavBar />
 
       <div className="main">
         <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/explore" element={<ExploreAll />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/wishlist" element={<WishList />} />
+          <Route path="/product/:id" element={<ProductDetails />} />
+
           {/* Authentication Routes */}
           <Route
             path="/login"
@@ -36,49 +43,7 @@ function App() {
             element={user ? <Navigate to="/" /> : <Signup />}
           />
 
-          {/* Protected Routes - Only accessible after login */}
-          <Route
-            path="/"
-            element={
-              <PrivateRoute>
-                <Home />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/explore"
-            element={
-              <PrivateRoute>
-                <ExploreAll />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/cart"
-            element={
-              <PrivateRoute>
-                <Cart />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/product/:id"
-            element={
-              <PrivateRoute>
-                <ProductDetails />
-              </PrivateRoute>
-            }
-          />
-          <Route
-            path="/wishlist"
-            element={
-              <PrivateRoute>
-                <WishList />
-              </PrivateRoute>
-            }
-          />
-
-          {/* Error Page (Shown if the route doesn't exist) */}
+          {/* Error Page */}
           <Route path="*" element={<ErrorPage />} />
         </Routes>
       </div>

@@ -8,21 +8,21 @@ import {
 } from "../../Redux/cart/CartSlice";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-// import { checkoutCart } from "../../Redux/cart/CartSlice";
 import EmptyCart from "../../components/emptycart/EmptyCart";
 
 const Cart = () => {
   const dispatch = useDispatch();
   const products = useSelector((state) => state.cart);
   const navigate = useNavigate();
+  const user = useSelector((state) => state.auth.user); // Get logged-in user from Redux
 
-  //calculate total price
+  // Calculate total price
   const totalPrice = products.cart.reduce(
     (a, c) => a + c.quantity * c.price,
     0
   );
 
-  //remove product handler
+  // Remove single product handler
   const removeProductHandler = (product) => {
     dispatch(removeFromCart(product));
     toast.warning(`${product.title.slice(0, 20)} is removed from cart`, {
@@ -30,7 +30,7 @@ const Cart = () => {
     });
   };
 
-  //remove all product handler
+  // Remove all products
   const removeAllProduct = () => {
     dispatch(removeAll());
     toast.error("Your Cart is now empty", {
@@ -38,15 +38,21 @@ const Cart = () => {
     });
   };
 
+  // Checkout function with authentication check
   const checkout = () => {
-    toast.success("Order Placed Successfully");
-    navigate("/");
-    dispatch(removeAll());
-  }
+    if (!user) {
+      navigate("/login", { state: { from: "/cart" } }); // Redirect to login with return path
+    } else {
+      toast.success("Order Placed Successfully");
+      dispatch(removeAll());
+      navigate("/");
+    }
+  };
 
   if (products.cart.length === 0) {
     return <EmptyCart />;
   }
+
   return (
     <div className="container py-5 mt-4">
       <h2 className="py-3 text-center">Cart Page</h2>
@@ -81,9 +87,7 @@ const Cart = () => {
               <h6>${(product.price * product.quantity).toFixed(2)}</h6>
               <button
                 className="btn btn-danger"
-                onClick={() => {
-                  removeProductHandler(product);
-                }}
+                onClick={() => removeProductHandler(product)}
               >
                 Remove
               </button>

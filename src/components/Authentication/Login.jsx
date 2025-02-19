@@ -1,25 +1,27 @@
-import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 import { login } from "../../Redux/auth/AuthSlice";
-import { useNavigate } from "react-router-dom";
-import styles from "./Login.module.scss"; // Import SCSS file
+import styles from "./Login.module.scss";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const dispatch = useDispatch();
+  const location = useLocation();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user); // Get logged-in user
+
+  useEffect(() => {
+    if (user) {
+      const redirectPath = location.state?.from || "/";
+      navigate(redirectPath, { replace: true });
+    }
+  }, [user, navigate, location.state]);
 
   const handleLogin = (e) => {
     e.preventDefault();
-
-    // Dispatch both email and password to Redux
     dispatch(login({ email, password }));
-
-    if (localStorage.getItem("user")) {
-      // If user is stored, navigate to home
-      navigate("/");
-    }
   };
 
   return (
